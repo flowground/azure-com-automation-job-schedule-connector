@@ -1,0 +1,79 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "jobScheduleId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters supplied to the create job schedule operation.",
+            "properties": {
+                "properties": {
+                    "description": "Gets or sets the list of job schedule properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "parameters": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Gets or sets a list of job properties.",
+                            "type": "object"
+                        },
+                        "runOn": {
+                            "description": "Gets or sets the hybrid worker group that the scheduled job should run on.",
+                            "type": "string"
+                        },
+                        "runbook": {
+                            "description": "Gets or sets the runbook.",
+                            "properties": {
+                                "name": {
+                                    "description": "Gets or sets the name of the runbook.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "schedule": {
+                            "description": "Gets or sets the schedule.",
+                            "properties": {
+                                "name": {
+                                    "description": "Gets or sets the name of the Schedule.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "schedule",
+                        "runbook"
+                    ]
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
